@@ -34,7 +34,6 @@ from scipy.stats import norm
 from scipy import signal
 from scipy import ndimage
 
-
 def parse_cmd_line():
     import argparse
     """Parseur pour la commande gendata"""
@@ -180,7 +179,6 @@ def main():
             __PSDL[-1:-__N//2:-1]=__PSDL[1:__N//2]
         
             PSDsL.append((idx,__PSDL,PSD_L))
-
         
         idx+=1
         prevH=valH
@@ -191,6 +189,20 @@ def main():
     #
     # Loop over data is now finished, PSDs have been computed
     #
+
+    storeL=[]
+    storeH=[]
+
+    # We store the PSD info in the output file
+
+    for psd in PSDsL:
+        storeL.append((psd[0],psd[2]))
+    for psd in PSDsH:
+        storeH.append((psd[0],psd[2]))
+
+    f=open('PSDs.p', mode='wb')
+    pickle.dump((storeL,storeH),f)
+    f.close()
 
     step=int(0.5*PSD_length)
     nblocks=int(nentries/step)
