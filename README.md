@@ -30,6 +30,6 @@ A second macro will start from this file to produce the PSDs and the whitened da
 
 The final file contains the following trees:
 
-- **strain** will contain the non-gated data from Hanford and Livingston, both with and without soft injections, whitened.
+- **white** will contain the non-gated data from Hanford and Livingston, both with and without soft injections, whitened.
 - **injections** will contain the global MC truth of the injections.
 - **PSDs**: the PSDs computed over the data, one every 50s by default
