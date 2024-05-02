@@ -156,7 +156,7 @@ def main():
 
         # Hanford
         if comptH==PSD_length-1:
-            _,PSD_H=signal.welch(x,fs=__fe,nperseg=__fe)
+            _,PSD_H=signal.welch(x,fs=__fe,nperseg=4*__fe,average='median')
             comptH=0
             x[:]=0.
             
@@ -169,7 +169,7 @@ def main():
 
         # Livingston
         if comptL==PSD_length-1:
-            _,PSD_L=signal.welch(y,fs=__fe,nperseg=__fe)
+            _,PSD_L=signal.welch(y,fs=__fe,nperseg=4*__fe,average='median')
             comptL=0
             y[:]=0.
         
